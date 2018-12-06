@@ -1,0 +1,5 @@
+language: python
+before_script:
+  - pip install ansible-lint
+script: 
+  - ansible-lint provision.yml
