@@ -36,6 +36,11 @@
 - name: Configure shell
   user: name=ubuntu shell=/bin/zsh
 
+- name: Create vnc config dir
+  file: path=/home/ubuntu/.vnc state=directory
+  become_user: ubuntu
+  become: yes
+
 - name: Copy vnc passwd file
   copy: src=vnc.passwd dest=/home/ubuntu/.vnc/passwd
   become_user: ubuntu
