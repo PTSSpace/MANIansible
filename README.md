@@ -1,4 +1,4 @@
-# MANI ansible scripts
+# MANI ansible scripts [![](https://travis-ci.org/PTScientists/MANIansible.svg?branch=master)](https://travis-ci.org/PTScientists/MANIansible)
 
 This repo contains the scripts that allow you to prepare your Jetson TX2 board for the MANI project. 
 
