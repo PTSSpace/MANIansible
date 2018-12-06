@@ -1,5 +1,10 @@
 ---
-- name: Update package repositories
+- name: Configure package repositories
+  copy:
+    src: sources.list
+    dest: /etc/apt/sources.list
+
+- name: Update packages
   apt:
     update_cache: yes
     upgrade: yes
@@ -11,7 +16,37 @@
       'sudo',
       'htop',
       'git',
-      'mosh'
+      'mosh',
+      'x11vnc'
     ]
     state: latest
+
+- name: Install oh-my-zsh
+  git:
+    repo=https://github.com/robbyrussell/oh-my-zsh.git
+    dest=/home/ubuntu/.oh-my-zsh
+  become_user: ubuntu
+  become: yes
+  
+- name: Install shell config
+  copy: src=zshrc dest=/home/ubuntu/.zshrc
+  become_user: ubuntu 
+  become: yes
+
+- name: Configure shell
+  user: name=ubuntu shell=/bin/zsh
+
+- name: Copy vnc passwd file
+  copy: src=vnc.passwd dest=/home/ubuntu/.vnc/passwd
+  become_user: ubuntu
+  become: yes
+
+- name: Create x11vnc service file
+  copy: src=x11vnc.service dest=/etc/systemd/system/x11vnc.service
+
+- name: Start end enable x11vnc systemd service
+  systemd:
+    name: x11vnc
+    enabled: yes
+    state: started
 

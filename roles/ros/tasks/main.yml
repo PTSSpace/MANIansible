@@ -1,0 +1,17 @@
+---
+- name: Install ROS ppa
+  copy:
+    src: ros-latest.list
+    dest: /etc/apt/sources.list.d/ros-latest.list
+
+- name: Add ROS signing key
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 421C365BD9FF1F717815A3895523BAEEB01FA116
+
+- name: Install ROS
+  apt:
+    update_cache: yes
+    pkg: ros-kinetic-desktop-full
+    state: latest
+
