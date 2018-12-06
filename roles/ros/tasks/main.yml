@@ -13,5 +13,5 @@
   apt:
     update_cache: yes
     pkg: ros-kinetic-desktop-full
-    state: latest
+    state: present
 

@@ -10,7 +10,7 @@
     upgrade: yes
 
 - name: Install base packages
-  apt: 
+  apt:
     pkg: [
       'zsh',
       'sudo',
@@ -19,18 +19,18 @@
       'mosh',
       'x11vnc'
     ]
-    state: latest
+    state: present
 
 - name: Install oh-my-zsh
   git:
-    repo=https://github.com/robbyrussell/oh-my-zsh.git
+    repo=https://github.com/robbyrussell/oh-my-zsh.git#latest
     dest=/home/ubuntu/.oh-my-zsh
   become_user: ubuntu
   become: yes
-  
+
 - name: Install shell config
   copy: src=zshrc dest=/home/ubuntu/.zshrc
-  become_user: ubuntu 
+  become_user: ubuntu
   become: yes
 
 - name: Configure shell
