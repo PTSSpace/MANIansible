@@ -1,7 +1,7 @@
 ---
 - name: Ensure basic setup
   hosts: all
-  become: yes 
+  become: yes
   roles:
     - base
     - ros
