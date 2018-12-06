@@ -1,0 +1,17 @@
+---
+- name: Update package repositories
+  apt:
+    update_cache: yes
+    upgrade: yes
+
+- name: Install base packages
+  apt: 
+    pkg: [
+      'zsh',
+      'sudo',
+      'htop',
+      'git',
+      'mosh'
+    ]
+    state: latest
+

@@ -1,0 +1,6 @@
+all:
+  hosts:
+    172.16.10.87:
+      ansible_become_password: ubuntu
+      ansible_user: ubuntu
+
