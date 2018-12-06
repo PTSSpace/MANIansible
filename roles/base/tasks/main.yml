@@ -25,6 +25,7 @@
   git:
     repo=https://github.com/robbyrussell/oh-my-zsh.git#latest
     dest=/home/ubuntu/.oh-my-zsh
+    version=master
   become_user: ubuntu
   become: yes
 
