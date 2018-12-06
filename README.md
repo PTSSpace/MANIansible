@@ -13,6 +13,7 @@ This repo contains the scripts that allow you to prepare your Jetson TX2 board f
  * Install ansible
  * Flash L4T on your TX2 board, restart it and take not of the IP address
  * Copy `inventory.example` to `inventory` and change the IP address
+ * If you use the pico flexx camera: copy the `10-royale-ubuntu.rules` from the SDK to `roles/pico/files/`. Otherwise comment the pico role out in `provision.yml`.
  * Run `ansible-playbook -i inventory provision.yml`
  * Wait patiently
 
