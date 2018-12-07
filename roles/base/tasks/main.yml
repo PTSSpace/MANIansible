@@ -17,7 +17,8 @@
       'htop',
       'git',
       'mosh',
-      'x11vnc'
+      'x11vnc',
+      'tmux'
     ]
     state: present
 
