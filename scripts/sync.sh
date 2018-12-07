@@ -14,7 +14,7 @@ function fsw {
 function inotify {
   transfer "$@"
 
-  while inotifywait -q -e modify -e move -e create -e delete "$1" ; do
+  while inotifywait -r -q -e modify -e move -e create -e delete "$1" ; do
     transfer "$@"
   done
 }
