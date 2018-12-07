@@ -7,3 +7,4 @@
     - ros
     - catkin
     - pico
+    - i2c
