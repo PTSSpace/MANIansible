@@ -23,9 +23,11 @@ The vnc server is listening on port 5900 and the password is "ubuntu".
 
 ## Working on your projects
 
-A catkin workspace is created at `/home/ubuntu/catkin_ws`. The setup script is sourced by default. If you want to automatically push your code there while you work and have `rsync` and `fswatch` installed you can use the command:
+A catkin workspace is created at `/home/ubuntu/catkin_ws`. The setup script is sourced by default. If you want to automatically push your code every time there is a change you can use the `scripts/sync.sh` script:
 
 ```shell
-$ fswatch -o src | xargs -n1 -I{} rsync --info=progress2 -r src ubuntu@your_ip:catkin_ws
+$ ./sync.sh src ubuntu@10.0.0.1:catkin_ws
 ```
+
+This works best if you add your SSH key to the ubuntu user first.
 
