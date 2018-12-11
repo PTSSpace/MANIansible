@@ -17,13 +17,14 @@
       'htop',
       'git',
       'mosh',
-      'x11vnc'
+      'x11vnc',
+      'tmux'
     ]
     state: present
 
 - name: Install oh-my-zsh
   git:
-    repo=https://github.com/robbyrussell/oh-my-zsh.git#latest
+    repo=https://github.com/robbyrussell/oh-my-zsh.git
     dest=/home/ubuntu/.oh-my-zsh
     version=master
   become_user: ubuntu

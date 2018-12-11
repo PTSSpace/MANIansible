@@ -1,0 +1,12 @@
+---
+- name: Ensure user is part of plugdev group
+  user:
+    name=ubuntu
+    groups=plugdev
+    append=yes
+
+- name: Upload pico udev rule
+  copy:
+    src=10-royale-ubuntu.rules
+    dest=/etc/udev/rules.d/10-royale-ubuntu.rules
+
