@@ -5,11 +5,13 @@
     dest: /etc/apt/sources.list
 
 - name: Update packages
+  retries: 2
   apt:
     update_cache: yes
     upgrade: yes
 
 - name: Install base packages
+  retries: 2
   apt:
     pkg: [
       'zsh',
