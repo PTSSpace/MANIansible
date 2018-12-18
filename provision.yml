@@ -5,6 +5,4 @@
   roles:
     - base
     - ros
-    - catkin
-    - pico
-    - i2c
+    - sensors
