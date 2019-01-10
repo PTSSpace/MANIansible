@@ -5,13 +5,13 @@
     dest: /etc/apt/sources.list
 
 - name: Update packages
-  retries: 2
   apt:
     update_cache: yes
     upgrade: yes
+  register: result
+  until: result | success
 
 - name: Install base packages
-  retries: 2
   apt:
     pkg: [
       'zsh',
@@ -23,6 +23,8 @@
       'tmux'
     ]
     state: present
+  register: result
+  until: result | success
 
 - name: Install oh-my-zsh
   git:
