@@ -1,0 +1,6 @@
+---
+- name: Install pca9685 package
+  pip:
+    name: adafruit-pca9685
+    virtualenv: /home/ubuntu/catkin_ws
+

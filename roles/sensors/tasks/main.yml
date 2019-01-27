@@ -10,3 +10,15 @@
     src=10-royale-ubuntu.rules
     dest=/etc/udev/rules.d/10-royale-ubuntu.rules
 
+- name: Install i2c-tools
+  apt:
+    pkg: i2c-tools
+    state: present
+  register: result
+  until: result | success
+
+- name: Ensure user is part of the i2c group
+  user:
+    name=ubuntu
+    groups=i2c
+    append=yes

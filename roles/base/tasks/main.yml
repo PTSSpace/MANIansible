@@ -8,6 +8,8 @@
   apt:
     update_cache: yes
     upgrade: yes
+  register: result
+  until: result | success
 
 - name: Install base packages
   apt:
@@ -21,6 +23,8 @@
       'tmux'
     ]
     state: present
+  register: result
+  until: result | success
 
 - name: Install oh-my-zsh
   git:
