@@ -61,3 +61,13 @@
     enabled: yes
     state: started
 
+- name: Check for ch341 module
+  stat: path=/lib/modules/4.4.38-tegra/kernel
+  register: ch341
+
+- name: Install ch341 kernel module
+  get_url:
+    url: https://oc.ptscientists.com/index.php/s/1Qpc2CYtjhfuzgJ/download
+    dest: /lib/modules/4.4.38-tegra/kernel
+  when: not ch341.stat.exists
+
