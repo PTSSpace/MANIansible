@@ -1,3 +1,4 @@
 inventory
 *.retry
 10-royale-ubuntu.rules
+ubuntu-base-16.04-core-arm64.tar.gz

@@ -37,6 +37,13 @@
     groups: sudo
     password: ubuntu
 
+- name: Fix /home/ubuntu permissions
+  file:
+    path: /home/ubuntu
+    owner: ubuntu
+    group: ubuntu
+    recurse: True
+
 - name: Install oh-my-zsh
   git:
     repo=https://github.com/robbyrussell/oh-my-zsh.git
