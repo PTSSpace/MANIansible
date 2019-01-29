@@ -14,17 +14,28 @@
 - name: Install base packages
   apt:
     pkg: [
+      'network-manager',
+      'openssh-server',
+      'openssh-client',
       'zsh',
       'sudo',
       'htop',
       'git',
       'mosh',
       'x11vnc',
-      'tmux'
+      'tmux',
+      'vim'
     ]
     state: present
   register: result
   until: result | success
+
+- name: Add ubuntu user
+  user:
+    name: ubuntu
+    shell: /bin/bash
+    groups: sudo
+    password: ubuntu
 
 - name: Install oh-my-zsh
   git:
