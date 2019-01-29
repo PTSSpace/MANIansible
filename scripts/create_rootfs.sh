@@ -57,7 +57,7 @@ apt-get install -y ansible
 cd /root
 git clone https://github.com/PTScientists/MANIansible
 cd MANIansible
-cp /root/*.rules roles/pico/files/
+cp /root/*.rules MANIansible/roles/sensors/files/
 ansible-playbook -i inventory.local provision.yml
 EOF
 
