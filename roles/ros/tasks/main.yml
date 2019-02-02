@@ -27,12 +27,17 @@
   register: result
   until: result | success
 
+- name: Create catkin workspace dir
+  file:
+    path: /home/ubuntu/catkin_ws/src
+    state: directory
+    owner: ubuntu
+    group: ubuntu
+
 - name: Create catkin workspace
-  command: >-
-    /bin/zsh -c "source /opt/ros/kinetic/setup.zsh && mkdir -p /home/ubuntu/catkin_ws/src
-                && cd /home/ubuntu/catkin_ws && catkin_make"
+  command: /bin/zsh -c "source /opt/ros/kinetic/setup.zsh && catkin_make"
   become: yes
   become_user: ubuntu
   args:
-    creates: /home/ubuntu/catkin_ws
+    chdir: /home/ubuntu/catkin_ws
 
