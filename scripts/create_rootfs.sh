@@ -57,7 +57,7 @@ apt-get install -y ansible
 cd /root
 git clone https://github.com/PTScientists/MANIansible
 cd MANIansible
-cp /root/*.rules MANIansible/roles/sensors/files/
+cp /root/*.rules roles/sensors/files/
 ansible-playbook -i inventory.local provision.yml
 EOF
 
@@ -74,7 +74,8 @@ EOF
   sudo rm -rf var/cache/apt/archives/*.deb
   sudo rm -rf tmp/*
 
-  sudo tar -jcpf ../mani_ubuntu_16.04_amd64.tbz2
+  cd "$rootfs"
+  sudo tar -cpzf ../mani_ubuntu_16.04_arm64.tar.gz .
 }
 
 main "$@"

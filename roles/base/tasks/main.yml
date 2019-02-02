@@ -34,7 +34,7 @@
     name: ubuntu
     shell: /bin/bash
     groups: sudo
-    password: ubuntu
+    password: "{{ 'ubuntu' | password_hash('sha512') }}"
 
 - name: Fix /home/ubuntu permissions
   file:
