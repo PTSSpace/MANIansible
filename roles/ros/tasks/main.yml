@@ -36,3 +36,18 @@
   args:
     creates: /home/ubuntu/catkin_ws
 
+- name: Install geometry
+  apt:
+    update_cache: yes
+    pkg: ros-kinetic-geometry
+    state: present
+  register: result
+  until: result | success
+
+- name: Install geometry2
+  apt:
+    update_cache: yes
+    pkg: ros-kinetic-geometry2
+    state: present
+  register: result
+  until: result | success
