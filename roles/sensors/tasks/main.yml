@@ -22,7 +22,7 @@
     name=ubuntu
     groups=i2c
     append=yes
-    
+
 - name: Install smbus2 package
   pip:
     name: smbus2
