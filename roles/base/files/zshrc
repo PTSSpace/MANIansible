@@ -18,5 +18,5 @@ if [[ -a ~/catkin_ws/devel/setup.zsh ]]; then
 fi
 
 # load ROS environment
-source /opt/ros/kinetic/setup.zsh
+source /opt/ros/melodic/setup.zsh
 
