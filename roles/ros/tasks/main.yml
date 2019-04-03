@@ -14,7 +14,7 @@
 - name: Install ROS
   apt:
     update_cache: yes
-    pkg: ros-kinetic-desktop-full
+    pkg: ros-melodic-desktop-full
     state: present
   register: result
   until: result | success
