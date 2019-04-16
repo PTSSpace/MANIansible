@@ -1,6 +1,6 @@
 # Setting up can devices
 
-Can devices are currently not managed by ansible. To get them up and running use the following commands:
+CAN devices are created during boot by running the following commands in the `/etc/rc.local` file.
 
 ```shell
 $ sudo modprob can can_raw mttcan
