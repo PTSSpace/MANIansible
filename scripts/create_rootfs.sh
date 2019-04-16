@@ -1,7 +1,6 @@
 #!/bin/bash
 
-ubuntu_image="ubuntu-base-16.04-core-arm64.tar.gz"
-picco_udev_rule="10-royale-ubuntu.rules"
+ubuntu_image="ubuntu_bionic-l4t_aarch64_src.tbz2"
 
 function error() {
   echo "Error: $1"
@@ -15,10 +14,6 @@ function validate() {
 
   if [ ! -f "$ubuntu_image" ]; then
     error "Missing $ubuntu_image"
-  fi
-
-  if [ ! -f "$picco_udev_rule" ]; then
-    error "Missing $picco_udev_rule"
   fi
 
   if [ "$#" -ne 1 ]; then
@@ -37,7 +32,6 @@ function main() {
 
   mkdir "$rootfs"
   sudo tar xpf "$ubuntu_image" -C "$rootfs"
-  sudo cp "$picco_udev_rule" "$rootfs/root/"
   cd "$rootfs"
 
   sudo mount /sys ./sys -o bind
@@ -57,7 +51,6 @@ apt-get install -y ansible
 cd /root
 git clone https://github.com/PTScientists/MANIansible
 cd MANIansible
-cp /root/*.rules roles/sensors/files/
 ansible-playbook -i inventory.local provision.yml
 EOF
 
@@ -75,7 +68,7 @@ EOF
   sudo rm -rf tmp/*
 
   cd "$rootfs"
-  sudo tar -cpzf ../mani_ubuntu_16.04_arm64.tar.gz .
+  sudo tar -cpzf ../mani_ubuntu_18.04_aarch64.tar.gz .
 }
 
 main "$@"
