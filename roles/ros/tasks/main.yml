@@ -14,7 +14,7 @@
 - name: Install ROS
   apt:
     update_cache: yes
-    pkg: ros-kinetic-desktop-full
+    pkg: ros-melodic-desktop-full
     state: present
   register: result
   until: result | success
@@ -22,17 +22,20 @@
 - name: Install catkin
   apt:
     update_cache: yes
-    pkg: ros-kinetic-catkin
+    pkg: ros-melodic-catkin
     state: present
   register: result
   until: result | success
 
 - name: Create catkin workspace
-  command: >-
-    /bin/zsh -c "source /opt/ros/kinetic/setup.zsh && mkdir -p /home/ubuntu/catkin_ws/src
-                && cd /home/ubuntu/catkin_ws && catkin_make"
+  shell: |
+        source /opt/ros/melodic/setup.bash &&
+        mkdir -p /home/ubuntu/catkin_ws/src &&
+        cd /home/ubuntu/catkin_ws &&
+        catkin_make
   become: yes
   become_user: ubuntu
   args:
     creates: /home/ubuntu/catkin_ws
+    executable: /bin/bash
 
