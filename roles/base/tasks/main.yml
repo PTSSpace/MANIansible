@@ -61,5 +61,8 @@
   user: name=ubuntu shell=/bin/zsh
 
 - name: Create rc.local
-  copy: src=rc.local dest=/etc/rc.local
+  copy:
+    src: rc.local
+    dest: /etc/rc.local
+    mode: u=rwx,g=rx,o=rx
 
