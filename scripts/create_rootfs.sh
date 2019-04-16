@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ubuntu_image="ubuntu_bionic-l4t_aarch64_src.tbz2"
+ubuntu_image="ubuntu_18.04_aarch64.tar.gz"
 
 function error() {
   echo "Error: $1"
