@@ -23,7 +23,8 @@
       'git',
       'mosh',
       'tmux',
-      'vim'
+      'vim',
+      'can-utils'
     ]
     state: present
   register: result
@@ -58,4 +59,7 @@
 
 - name: Configure shell
   user: name=ubuntu shell=/bin/zsh
+
+- name: Create rc.local
+  copy: src=rc.local dest=/etc/rc.local
 
