@@ -14,17 +14,34 @@
 - name: Install base packages
   apt:
     pkg: [
+      'network-manager',
+      'openssh-server',
+      'openssh-client',
       'zsh',
       'sudo',
       'htop',
       'git',
       'mosh',
-      'x11vnc',
-      'tmux'
+      'tmux',
+      'vim'
     ]
     state: present
   register: result
   until: result | success
+
+- name: Add ubuntu user
+  user:
+    name: ubuntu
+    shell: /bin/bash
+    groups: sudo
+    password: "{{ 'ubuntu' | password_hash('sha512') }}"
+
+- name: Fix /home/ubuntu permissions
+  file:
+    path: /home/ubuntu
+    owner: ubuntu
+    group: ubuntu
+    recurse: True
 
 - name: Install oh-my-zsh
   git:
@@ -41,23 +58,4 @@
 
 - name: Configure shell
   user: name=ubuntu shell=/bin/zsh
-
-- name: Create vnc config dir
-  file: path=/home/ubuntu/.vnc state=directory
-  become_user: ubuntu
-  become: yes
-
-- name: Copy vnc passwd file
-  copy: src=vnc.passwd dest=/home/ubuntu/.vnc/passwd
-  become_user: ubuntu
-  become: yes
-
-- name: Create x11vnc service file
-  copy: src=x11vnc.service dest=/etc/systemd/system/x11vnc.service
-
-- name: Start end enable x11vnc systemd service
-  systemd:
-    name: x11vnc
-    enabled: yes
-    state: started
 

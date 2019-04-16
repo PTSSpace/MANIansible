@@ -27,6 +27,13 @@
   register: result
   until: result | success
 
+- name: Create catkin workspace dir
+  file:
+    path: /home/ubuntu/catkin_ws/src
+    state: directory
+    owner: ubuntu
+    group: ubuntu
+
 - name: Create catkin workspace
   shell: |
         source /opt/ros/melodic/setup.bash &&

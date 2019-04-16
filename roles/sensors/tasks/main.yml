@@ -5,6 +5,11 @@
     groups=plugdev
     append=yes
 
+- name: Ensure udev rules.d exists
+  file:
+    path: /etc/udev/rules.d
+    state: directory
+
 - name: Upload pico udev rule
   copy:
     src=10-royale-ubuntu.rules
