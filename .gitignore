@@ -1,4 +1,4 @@
 inventory
 *.retry
-10-royale-ubuntu.rules
 ubuntu-base-16.04-core-arm64.tar.gz
+ubuntu_bionic-l4t_aarch64_src.tbz2
