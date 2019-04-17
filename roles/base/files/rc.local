@@ -3,8 +3,8 @@ modprobe can
 modprobe can_raw
 modprobe mttcan
 
-ip link set can0 type can bitrate 100000
-ip link set can1 type can bitrate 100000
+ip link set can0 type can bitrate 100000 restart-ms 100
+ip link set can1 type can bitrate 100000 restart-ms 100
 ip link set up can0
 ip link set up can1
 
